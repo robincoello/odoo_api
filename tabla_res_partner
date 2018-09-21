@@ -1,0 +1,92 @@
+cocoa-# \d res_partner
+                                            Table "public.res_partner"
+         Column          |            Type             |                        Modifiers         
+                
+-------------------------+-----------------------------+------------------------------------------
+----------------
+ id                      | integer                     | not null default nextval('res_partner_id_
+seq'::regclass)
+ name                    | character varying           | 
+ company_id              | integer                     | 
+ comment                 | text                        | 
+ website                 | character varying           | 
+ create_date             | timestamp without time zone | 
+ color                   | integer                     | 
+ active                  | boolean                     | 
+ street                  | character varying           | 
+ supplier                | boolean                     | 
+ city                    | character varying           | 
+ display_name            | character varying           | 
+ zip                     | character varying           | 
+ title                   | integer                     | 
+ country_id              | integer                     | 
+ commercial_company_name | character varying           | 
+ parent_id               | integer                     | 
+ company_name            | character varying           | 
+ employee                | boolean                     | 
+ ref                     | character varying           | 
+ email                   | character varying           | 
+ is_company              | boolean                     | 
+ function                | character varying           | 
+ lang                    | character varying           | 
+ fax                     | character varying           | 
+ street2                 | character varying           | 
+ barcode                 | character varying           | 
+ phone                   | character varying           | 
+ write_date              | timestamp without time zone | 
+ date                    | date                        | 
+ tz                      | character varying           | 
+ write_uid               | integer                     | 
+ customer                | boolean                     | 
+ create_uid              | integer                     | 
+ credit_limit            | double precision            | 
+ user_id                 | integer                     | 
+ mobile                  | character varying           | 
+ type                    | character varying           | 
+ partner_share           | boolean                     | 
+ vat                     | character varying           | 
+ state_id                | integer                     | 
+ commercial_partner_id   | integer                     | 
+Indexes:
+    "res_partner_pkey" PRIMARY KEY, btree (id)
+    "res_partner_commercial_partner_id_index" btree (commercial_partner_id)
+    "res_partner_company_id_index" btree (company_id)
+    "res_partner_date_index" btree (date)
+    "res_partner_display_name_index" btree (display_name)
+    "res_partner_name_index" btree (name)
+    "res_partner_parent_id_index" btree (parent_id)
+    "res_partner_ref_index" btree (ref)
+Check constraints:
+    "res_partner_check_name" CHECK (type::text = 'contact'::text AND name IS NOT NULL OR type::tex
+t <> 'contact'::text)
+Foreign-key constraints:
+    "res_partner_commercial_partner_id_fkey" FOREIGN KEY (commercial_partner_id) REFERENCES res_pa
+rtner(id) ON DELETE SET NULL
+    "res_partner_company_id_fkey" FOREIGN KEY (company_id) REFERENCES res_company(id) ON DELETE SE
+T NULL
+    "res_partner_country_id_fkey" FOREIGN KEY (country_id) REFERENCES res_country(id) ON DELETE RE
+STRICT
+    "res_partner_create_uid_fkey" FOREIGN KEY (create_uid) REFERENCES res_users(id) ON DELETE SET 
+NULL
+    "res_partner_parent_id_fkey" FOREIGN KEY (parent_id) REFERENCES res_partner(id) ON DELETE SET 
+NULL
+    "res_partner_state_id_fkey" FOREIGN KEY (state_id) REFERENCES res_country_state(id) ON DELETE 
+RESTRICT
+    "res_partner_title_fkey" FOREIGN KEY (title) REFERENCES res_partner_title(id) ON DELETE SET NU
+LL
+    "res_partner_user_id_fkey" FOREIGN KEY (user_id) REFERENCES res_users(id) ON DELETE SET NULL
+    "res_partner_write_uid_fkey" FOREIGN KEY (write_uid) REFERENCES res_users(id) ON DELETE SET NU
+LL
+Referenced by:
+    TABLE "res_company" CONSTRAINT "res_company_partner_id_fkey" FOREIGN KEY (partner_id) REFERENC
+ES res_partner(id) ON DELETE SET NULL
+    TABLE "res_partner_bank" CONSTRAINT "res_partner_bank_partner_id_fkey" FOREIGN KEY (partner_id
+) REFERENCES res_partner(id) ON DELETE CASCADE
+    TABLE "res_partner" CONSTRAINT "res_partner_commercial_partner_id_fkey" FOREIGN KEY (commercia
+l_partner_id) REFERENCES res_partner(id) ON DELETE SET NULL
+    TABLE "res_partner" CONSTRAINT "res_partner_parent_id_fkey" FOREIGN KEY (parent_id) REFERENCES
+ res_partner(id) ON DELETE SET NULL
+    TABLE "res_partner_res_partner_category_rel" CONSTRAINT "res_partner_res_partner_category_rel_
+partner_id_fkey" FOREIGN KEY (partner_id) REFERENCES res_partner(id) ON DELETE CASCADE
+    TABLE "res_users" CONSTRAINT "res_users_partner_id_fkey" FOREIGN KEY (partner_id) REFERENCES r
+es_partner(id) ON DELETE RESTRICT
