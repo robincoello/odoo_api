@@ -1,8 +1,15 @@
 # odoo_api
 
-Video here
+Video here contacts
 
 https://www.youtube.com/watch?v=Ye7cJU0dDvo&feature=youtu.be
+
+
+Video produits: 
+
+https://youtu.be/y2VXdi3rY6k
+
+
 
 Code: (anc lib xmlrpclib !)
 
