@@ -14,10 +14,10 @@ import os
 import json
 
 common = xmlrpclib.ServerProxy('{}/xmlrpc/2/common'.format(url))
-#print common.version()
+print common.version()
 uid = common.authenticate(db, username, password, {})
 
-#print uid
+print uid
 #print "******************************"
 
 
@@ -26,8 +26,12 @@ common.version()
 #print common.version()
 
 models = xmlrpclib.ServerProxy('{}/xmlrpc/2/object'.format(url))
-models.execute_kw(db, uid, password,
-    'res.partner', 'check_access_rights',
+models.execute_kw(
+    db, 
+    uid, 
+    password,
+    'res.partner', 
+    'check_access_rights',
     ['read'], {'raise_exception': False})
 
 def total_customers():
@@ -69,6 +73,11 @@ def menu():
     print("********** S H O P ***********")
     print("******* M A N A G E R ********")
     print("******************************")
+    print("* SHOP : " + url)
+    print("* DB   : " + db)
+    print("******************************") 
+    print("** C O N T A C T S ***********") 
+    print("******************************") 
     print("1) List Contacts")
     print("2) Add Contact")
     print("3) View Contact")
