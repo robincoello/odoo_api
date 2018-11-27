@@ -1,17 +1,25 @@
 ########################################
 ########################################
 ########################################
-url = 'http://192.168.122.146:8069' 
-db = 'cacao'
-username = 'robincoello@hotmail.com'
-password = 'admin'
+#url = 'http://192.168.122.146:8069' 
+#db = 'cacao'
+#username = 'robincoello@hotmail.com'
+#password = 'admin'
 ########################################
 ########################################
+url = 'https://edu-1800395.odoo.com' 
+db = 'edu-1800395'
+username = 'roencosa@gmail.com'
+#password = '1254541'
 ########################################
 
 import xmlrpclib
 import os
 import json
+import getpass
+
+print "Your password odoo (" + url + ")"
+password = getpass.getpass()
 
 common = xmlrpclib.ServerProxy('{}/xmlrpc/2/common'.format(url))
 print common.version()
