@@ -30,4 +30,10 @@ Tutorial
 
 https://www.datacamp.com/community/tutorials/gui-tkinter-python
 
+https://fundamentos-de-desarrollo-en-odoo.readthedocs.io/es/latest/capitulos/modelos-estructura-datos-aplicacion.html
+
+https://www.netveloper.com/conectar-pgadmin3-con-el-servidor-de-postgreSQL
+
+https://useopenerp.com/v8/module/mrp-byproducts
+
 
