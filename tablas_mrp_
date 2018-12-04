@@ -1,0 +1,54 @@
+ public | mrp_bom                                                | table | odoo
+ public | mrp_bom_line                                           | table | odoo
+ public | mrp_bom_line_product_attribute_value_rel               | table | odoo
+ public | mrp_document                                           | table | odoo
+ public | mrp_message                                            | table | odoo
+ public | mrp_product_produce                                    | table | odoo
+ public | mrp_product_produce_line                               | table | odoo
+ public | mrp_production                                         | table | odoo
+ public | mrp_routing                                            | table | odoo
+ public | mrp_routing_workcenter                                 | table | odoo
+ public | mrp_unbuild                                            | table | odoo
+ public | mrp_workcenter                                         | table | odoo
+ public | mrp_workcenter_productivity                            | table | odoo
+ public | mrp_workcenter_productivity_loss                       | table | odoo
+ public | mrp_workorder   
+
+*******************************************************************************
+                                          Table « public.mrp_bom »
+      Colonne      |            Type             |                      Modificateurs                       
+-------------------+-----------------------------+----------------------------------------------------------
+ id                | integer                     | non NULL Par défaut, nextval('mrp_bom_id_seq'::regclass)
+ code              | character varying           | 
+ active            | boolean                     | 
+ type              | character varying           | non NULL
+ product_tmpl_id   | integer                     | non NULL
+ product_id        | integer                     | 
+ product_qty       | numeric                     | non NULL
+ product_uom_id    | integer                     | non NULL
+ sequence          | integer                     | 
+ routing_id        | integer                     | 
+ ready_to_produce  | character varying           | non NULL
+ picking_type_id   | integer                     | 
+ company_id        | integer                     | non NULL
+ message_last_post | timestamp without time zone | 
+ create_uid        | integer                     | 
+ create_date       | timestamp without time zone | 
+ write_uid         | integer                     | 
+ write_date        | timestamp without time zone | 
+********************************************************************************
+                                        Table « public.mrp_bom_line »
+    Colonne     |            Type             |                         Modificateurs                         
+----------------+-----------------------------+---------------------------------------------------------------
+ id             | integer                     | non NULL Par défaut, nextval('mrp_bom_line_id_seq'::regclass)
+ product_id     | integer                     | non NULL
+ product_qty    | numeric                     | non NULL
+ product_uom_id | integer                     | non NULL
+ sequence       | integer                     | 
+ routing_id     | integer                     | 
+' bom_id         | integer                     | non NULL
+ operation_id   | integer                     | 
+ create_uid     | integer                     | 
+ create_date    | timestamp without time zone | 
+ write_uid      | integer                     | 
+ write_date     | timestamp without time zone | 
