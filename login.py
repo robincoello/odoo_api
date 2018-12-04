@@ -11,6 +11,7 @@ from datetime import timedelta
 import random
 from os import listdir # search files
 from os.path import isfile, join # search files
+import rc_file
 
 ################################################################################
 ## F U N C T I O N S ###########################################################

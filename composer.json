@@ -1,0 +1,7 @@
+{
+    "name": "robincoello/odoo_api",
+    "description": "Odoo control sisteme",
+    "require": {
+        "python": "^2.7.13"     
+    }
+}
