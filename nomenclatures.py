@@ -108,11 +108,26 @@ def total_products():
 
 def detalles(rc_id):
     print("**************************************")
-   # ids = models.execute_kw(db, uid, password, table , 'search',[[['id', '=', True]]],)
-    ids = models.execute_kw(db, uid, password, table , 'search',[[['id', '=', 3]]],)
-   # ids = models.execute_kw(db, uid, password, 'mrp.bom.line', 'search',[[]],)
+   
+   # ids = models.execute_kw(db, uid, password, 'mrp.bom.line' , 'search',[[['bom_id', '=', rc_id]]],)
+    ids = models.execute_kw(db, uid, password, 'mrp.bom.line', 'search',[[]],)
 
-    resultat = models.execute_kw(db, uid, password, 'mrp.bom.line', 'read',[ids], rc_campos_bom_line())
+    resultat = models.execute_kw(db, uid, password, 'mrp.bom.line', 'read',[ids], {
+            'fields': [
+            'id',
+            'product_id',
+            'product_qty',
+            'product_uom_id',
+            'sequence',
+            'routing_id',
+            'bom_id',
+            'operation_id',            
+            'create_uid',
+            'create_date',
+            'write_uid',
+            'write_date'
+                        ]
+        })
 
 # boucle para contar los productos
     total = 0
@@ -184,10 +199,10 @@ def menu():
     print("** N O E N C L A T U R E S ***") 
     print("******************************") 
     print("1) List Nomenclatures")       
-  #  print("3) Nomenclature details :")
-  #  print("5) Delete ")
-  #  print("6) Search")
-#    print("0) Exit")
+    print("3) Nomenclature details ")
+  # print("5) Delete ")
+  # print("6) Search")
+#   print("0) Exit")
     print("")
     print("TAKE A NUMBER")
 

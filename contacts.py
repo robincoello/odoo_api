@@ -75,57 +75,7 @@ def detalles(rc_id_customer):
    # print "Customers list : "+str(resultat)
     print(json.dumps(resultat, indent=4))
 
-
-def menu():
-    print("******************************")
-    print("********** S H O P ***********")
-    print("******* M A N A G E R ********")
-    print("******************************")
-    print("* SHOP : " + url)
-    print("* DB   : " + db)
-    print("******************************") 
-    print("** C O N T A C T S ***********") 
-    print("******************************") 
-    print("1) List Contacts")
-    print("2) Add Contact")
-    print("3) View Contact")
-    print("4) Edit Contact")
-    print("5) Delete Contact")
-#    print("0) Exit")
-    print("")
-    print("TAKE A NUMBER")
-
-
-os.system('clear')
-menu()
-
-
-opcion = input()
-
-while(opcion > 5 or opcion < 1 ):
-    print("Please a number between 1 - 5")
-    opcion = input()
-
-
-
-
-
-
-if opcion == 111:
-    print("**************************************")
-
-    resultat = models.execute_kw(db, uid, password,
-    'res.partner', 'search',
-    [[
-        ['customer', '=', True],
-        
-    ]])
-    print "Customers list : "+str(resultat)
-
-####################################################
-######### S H O W ##################################
-#
-if opcion == 1:
+def show_all():
     print("**************************************")
     ids = models.execute_kw(db, uid, password,'res.partner', 'search',[[['customer', '=', True]]],)
 
@@ -145,11 +95,8 @@ if opcion == 1:
     )
    # print "Customers list : "+str(resultat)
     print(json.dumps(resultat, indent=4))
-
-####################################################
-######### A D D #####################################
-#
-if opcion == 2:
+################################################################################
+def add():
     print("**************************************")
     print("Add a NEW contact")
 
@@ -173,6 +120,60 @@ if opcion == 2:
     id = str(id)
     print('The customer ' + id + ' is add: ')
     detalles(id)
+################################################################################
+
+def menu():
+    print("******************************")
+    print("********** S H O P ***********")
+    print("******* M A N A G E R ********")
+    print("******************************")
+    print("* SHOP : " + url)
+    print("* DB   : " + db)
+    print("******************************") 
+    print("** C O N T A C T S ***********") 
+    print("******************************") 
+    print("1) List")
+    print("2) Add")
+    print("3) View")
+    print("4) Edit")
+    print("5) Delete")
+#    print("0) Exit")
+    print("")
+    print("TAKE A NUMBER")
+
+
+os.system('clear')
+menu()
+
+
+opcion = input()
+
+while(opcion > 5 or opcion < 1 ):
+    print("Please a number between 1 - 5")
+    opcion = input()
+
+if opcion == 111:
+    print("**************************************")
+
+    resultat = models.execute_kw(db, uid, password,
+    'res.partner', 'search',
+    [[
+        ['customer', '=', True],
+        
+    ]])
+    print "Customers list : "+str(resultat)
+
+####################################################
+######### S H O W ##################################
+#
+if opcion == 1:
+    show_all()    
+
+####################################################
+######### A D D #####################################
+#
+if opcion == 2:
+    add()
 
 ####################################################
 ######### D E T A I L S  ###########################
