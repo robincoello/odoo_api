@@ -4,7 +4,7 @@
 url = 'https://edu-1800395.odoo.com' 
 db = 'edu-1800395'
 username = 'roencosa@gmail.com'
-password = '666666666666666666'
+password = '1111'
 
 ########################################
 ########################################
@@ -33,6 +33,7 @@ import pandas
 
 print "Your password odoo (" + url + ")"
 password = getpass.getpass()
+
 table = "mrp.bom"
 
 def rc_campos_bom():
@@ -139,7 +140,7 @@ def detalles(rc_id):
 
     print(json.dumps(resultat, indent=4))
 
-    print("Total de productos: " + repr(total))
+    print("Total de lignes: " + repr(total))
 
 
 ################################################################################
@@ -147,9 +148,31 @@ def list():
     print("**************************************")
    # ids = models.execute_kw(db, uid, password, table , 'search',[[['id', '=', True]]],)
    # ids = models.execute_kw(db, uid, password, table , 'search',[[['id', '=', 3]]],)
-    ids = models.execute_kw(db, uid, password, table, 'search',[[]],)
+    ids = models.execute_kw(db, uid, password, 'mrp.bom', 'search',[[]],)
 
-    resultat = models.execute_kw(db, uid, password,table, 'read',[ids], rc_campos_bom())
+    resultat = models.execute_kw(db, uid, password,table, 'read',[ids], {
+            'fields': [
+            'id',
+            'code',
+            'active',
+            'type',
+            'product_tmpl_id',
+            'product_id',
+            'product_qty',
+            'product_uom_id',
+            'sequence',
+            'routing_id',
+            'ready_to_produce',
+            'picking_type_id',
+            'company_id',
+            'message_last_post',
+            'create_uid',
+            'create_date',
+            'write_uid',
+            'write_date'
+                        ]
+        }
+)
 
 # boucle para contar los productos
     total = 0
@@ -161,7 +184,7 @@ def list():
 
     print(json.dumps(resultat, indent=4))
 
-    print("Total de productos: " + repr(total))
+    print("Total de nomenclatures: " + repr(total))
 
 ##############################################
 ##############################################
@@ -248,8 +271,8 @@ if opcion == 1:
 
 if opcion == 3:
     print("**************************************")
-    print("Details")
-    rc_id = raw_input("ID number please ")
+    print("Nomenclature details:")
+    rc_id = raw_input("Nomenclature ID number please ")
 ## D E T A I L S
     detalles(rc_id)
    
