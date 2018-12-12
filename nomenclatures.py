@@ -89,6 +89,8 @@ def detalles(rc_id):
     print(json.dumps(resultat, indent=4))
 
     print("Total de lignes: " + repr(total))
+    
+    tojson(resultat)
 
 
 ################################################################################
@@ -131,12 +133,18 @@ def list():
     #print "Customers list : "+str(resultat)
 
     print(json.dumps(resultat, indent=4))
+    tojson(resultat)
 
     print("Total de nomenclatures: " + repr(total))
 
 ##############################################
 def jsontoxls():    
     pandas.read_json("odoo.json").to_excel("odoo.xlsx")
+##############################################
+def tojson(data):  
+    #data = "go"
+    with open('odoo.json', 'w') as outfile:
+        json.dump(data, outfile)
 
 
 
@@ -152,8 +160,8 @@ def menu():
     print("******************************") 
     print("** N O E N C L A T U R E S ***") 
     print("******************************") 
-    print("1) List Nomenclatures")       
-    print("2) Json to excel")       
+    print("1) List Nomenclatures & make json file")       
+    print("2) Json to excel")           
     print("3) Nomenclature details ")
   # print("5) Delete ")
   # print("6) Search")
@@ -183,6 +191,7 @@ if opcion == 1:
     print("**************************************")
     print("List")   
     list()
+    
 ####################################################
 ######### JSON TO EXCEL ##################################
 #
