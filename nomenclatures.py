@@ -90,7 +90,8 @@ def detalles(rc_id):
 
     print("Total de lignes: " + repr(total))
     
-    tojson(resultat)
+    # creation de json file avec le resultat
+    tojson(resultat, 'mrp_bom_line.json')
 
 
 ################################################################################
@@ -133,17 +134,17 @@ def list():
     #print "Customers list : "+str(resultat)
 
     print(json.dumps(resultat, indent=4))
-    tojson(resultat)
+    tojson(resultat,'mrp_bom.json')
 
     print("Total de nomenclatures: " + repr(total))
 
 ##############################################
-def jsontoxls():    
-    pandas.read_json("odoo.json").to_excel("odoo.xlsx")
+def jsontoxls(json_name, excel_name):    
+    pandas.read_json(json_name).to_excel(excel_name)
 ##############################################
-def tojson(data):  
+def tojson(data, json_name):  
     #data = "go"
-    with open('odoo.json', 'w') as outfile:
+    with open(json_name, 'w') as outfile:
         json.dump(data, outfile)
 
 
@@ -160,9 +161,10 @@ def menu():
     print("******************************") 
     print("** N O E N C L A T U R E S ***") 
     print("******************************") 
-    print("1) List Nomenclatures & make json file")       
+    print("1) List Nomenclatures & make json file (mrp_bom) ")       
     print("2) Json to excel")           
-    print("3) Nomenclature details ")
+    print("3) Nomenclature details & make json file (mrp_bom_line.json)")
+    print("4) mrp_bom_line.json to mrp_bom_line.xlsx")
   # print("5) Delete ")
   # print("6) Search")
 #   print("0) Exit")
@@ -196,8 +198,12 @@ if opcion == 1:
 ######### JSON TO EXCEL ##################################
 #
 if opcion == 2:
-    print("**************************************")    
-    jsontoxls()     
+    print("**************************************")   
+
+    json_name = 'mrp_bom.json'
+    excel_name = 'odoo.xlsx'
+ 
+    jsontoxls(json_name,excel_name)     
     print("Check now your file odoo.xlsx")
 
 ####################################################
@@ -212,3 +218,13 @@ if opcion == 3:
     detalles(rc_id)
 
     
+######### JSON TO EXCEL ##################################
+#
+if opcion == 4:
+    print("**************************************")   
+
+    json_name = 'mrp_bom_line.json'
+    excel_name = 'mrp_bom_line.xlsx'
+ 
+    jsontoxls(json_name,excel_name)     
+    print("Check now your file" + excel_name)
