@@ -212,7 +212,7 @@ def win_login():
     username.insert(END, 'roencosa@gmail.com')
 
     password = Entry(window, show='*')
-    password.insert(END, 'sayani1020')
+    password.insert(END, '102030')
 
 
     #Afficahge de tous les widgets et positionnements

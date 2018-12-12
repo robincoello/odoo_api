@@ -141,6 +141,7 @@ def list():
 ##############################################
 def jsontoxls(json_name, excel_name):    
     pandas.read_json(json_name).to_excel(excel_name)
+    print("Check now your file" + excel_name)
 ##############################################
 def tojson(data, json_name):  
     #data = "go"
@@ -227,4 +228,4 @@ if opcion == 4:
     excel_name = 'mrp_bom_line.xlsx'
  
     jsontoxls(json_name,excel_name)     
-    print("Check now your file" + excel_name)
+    
