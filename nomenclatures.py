@@ -94,11 +94,11 @@ def detalles(rc_id):
 ################################################################################
 def list():
     print("**************************************")
-   # ids = models.execute_kw(db, uid, password, table , 'search',[[['id', '=', True]]],)
-   # ids = models.execute_kw(db, uid, password, table , 'search',[[['id', '=', 3]]],)
+   # ids = models.execute_kw(db, uid, password, 'mrp.bom' , 'search',[[['id', '=', True]]],)
+   # ids = models.execute_kw(db, uid, password, 'mrp.bom' , 'search',[[['id', '=', 3]]],)
     ids = models.execute_kw(db, uid, password, 'mrp.bom', 'search',[[]],)
 
-    resultat = models.execute_kw(db, uid, password,table, 'read',[ids], {
+    resultat = models.execute_kw(db, uid, password,'mrp.bom', 'read',[ids], {
             'fields': [
             'id',
             'code',
@@ -153,6 +153,7 @@ def menu():
     print("** N O E N C L A T U R E S ***") 
     print("******************************") 
     print("1) List Nomenclatures")       
+    print("2) Json to excel")       
     print("3) Nomenclature details ")
   # print("5) Delete ")
   # print("6) Search")
@@ -180,9 +181,15 @@ while(opcion > 6 or opcion < 1 ):
 #
 if opcion == 1:
     print("**************************************")
-    print("List")
-    jsontoxls() 
+    print("List")   
     list()
+####################################################
+######### JSON TO EXCEL ##################################
+#
+if opcion == 2:
+    print("**************************************")    
+    jsontoxls()     
+    print("Check now your file odoo.xlsx")
 
 ####################################################
 ####################################################
